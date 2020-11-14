@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot转换集合数据</title>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            findBooks();
+        });
+        function findBooks(){
+            $.post("/findUsers",null,
+                function(data){
+                    $.each(data,function(){
+                        var tr  = $("<tr/>");
+                        $("<td/>").html(this.userName).appendTo(tr);
+                        $("<td/>").html(this.sex).appendTo(tr);
+                        $("<td/>").html(this.age).appendTo(tr);
+                        $("#userTable").append(tr);
+                    })
+                },"json");
+        }
+    </script>
+</head>
+
+<body>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Spring Boot转换集合数据</h3>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <table class="table table-bordered" id="userTable">
+                <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                </tr>
+                </thead>
+                <tbody class="text-center"></tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

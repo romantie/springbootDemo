@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lmk.springdemo.dao.LUserDao">
+    <select id="getUser" parameterType="Integer" resultType="com.lmk.springdemo.entity.User">
+        select id,user_name as userName,note from t_user where id=#{id}
+    </select>
+
+    <select id="findAllUser" resultType="com.lmk.springdemo.entity.User">
+        select id,user_name as userName,note from t_user
+    </select>
+
+    <select id="findUser" resultType="com.lmk.springdemo.entity.User">
+        select id,user_name as userName,note
+        from t_user
+        where user_name like concat('%',#{userName},'%')
+        and note like concat('%',#{note},'%')
+    </select>
+
+    <insert id="insertUser"
+        parameterType="com.lmk.springdemo.entity.User"
+        useGeneratedKeys="true"
+        keyProperty="id">
+        insert into t_user(user_name,note) values(#{userName},#{note})
+    </insert>
+
+    <delete id="deleteUser" parameterType="Integer">
+    delete from t_user where id=#{id}
+    </delete>
+</mapper>

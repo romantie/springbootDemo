@@ -10,8 +10,9 @@ public class UserConfig {
     @Bean
     public User user(){
         User user = new User();
-        user.setName("藏三");
+        user.setUserName("藏三");
         user.setId(1);
+        user.setNote("lalall");
         return user;
     }
 }

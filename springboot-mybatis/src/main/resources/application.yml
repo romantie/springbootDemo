@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: springboot-mybatis
+
+  profiles:
+    active: dev
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    # type: com.alibaba.druid.pool.DruidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/tb_questions
+
+mybatis:
+  type-aliases-package: com.ma.springbootmybatis.pojo
+  mapper-locations: classpath:mapper/*Mapper.xml
+logging:
+  level:
+    com:
+      ma:
+        springbootmybatis:
+          mapper: debug

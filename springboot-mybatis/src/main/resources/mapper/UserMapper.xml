@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ma.springbootmybatis.mapper.UserMapper">
+    <resultMap id="ResultSUser" type="com.ma.springbootmybatis.pojo.User">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"></result>
+        <result column="password" property="password" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <select id="findAllUser" resultMap="ResultSUser">
+        select * from stu
+    </select>
+
+    <select id="findById" parameterType="int" resultMap="ResultSUser">
+        select * from stu where id = #{id}
+    </select>
+
+    <insert id="insertUser" parameterType="user">
+        insert into stu(username,password) values(#{username},#{password})
+    </insert>
+
+ <update id="updateUser" parameterType="user">
+    update stu
+    <set>
+        <if test="username != null">
+            username = #{username},
+        </if>
+        <if test="password != null">
+            password = #{password}
+        </if>
+        where id = #{id}
+    </set>
+ </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from stu where id = #{id}
+    </delete>
+</mapper>

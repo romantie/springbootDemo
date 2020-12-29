@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+       PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 设置驼峰表示法 -->
+	   <!--  
+	    <settings> <setting name="mapUnderscoreToCamelCase" value="true" /> 
+		</settings>
+		-->
+	<typeAliases>
+	   <typeAlias type="nuc.edu.chapter05_mybatis1_20201118.param.UserParam" alias="UserParam"/>
+	  <!--
+	    <typeAlias type="nuc.edu.chapter05_mybatis1_20201118.pojo.User" alias="User"/> 
+	   --> 
+		<!-- 批量导入基本类别名 -->
+	  <package name="nuc.edu.chapter05_mybatis1_20201118.pojo"/>  
+	 
+	</typeAliases>
+	
+</configuration>
